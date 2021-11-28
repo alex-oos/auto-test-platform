@@ -29,6 +29,14 @@ import '@/permission' // permission control
 //   mockXHR()
 // }
 
+// 配置解决跨域问题
+// 导入axios
+import Axios from 'axios'
+// 全局使用axios
+Vue.prototype.$axios = Axios
+// 配置请求头，非常重要，有了这个才可以正常使用POST等请求后台数据
+Axios.defaults.headers.post['Content-Type'] = 'application/x-www-fromurlencodeed'
+
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明

@@ -7,30 +7,11 @@
 @email:tao.xu2008@outlook.com
 @description:
 """
-from abc import ABC
-
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework.authtoken.models import Token
 
 from .models import UserProfile
-
-
-class TokenSerializer(serializers.ModelSerializer):
-    """
-    用户信息序列化
-    """
-    first_name = serializers.CharField(source="user.first_name")
-    last_name = serializers.CharField(source="user.last_name")
-    phone = serializers.CharField(source="user.user.phone")
-    email = serializers.CharField(source="user.email")
-    date_joined = serializers.CharField(source="user.date_joined")
-
-    class Meta:
-        model = Token
-        # fields = '__all__'
-        fields = ('first_name', 'last_name', 'phone', 'email', 'key', 'date_joined')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -69,7 +50,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     def validate(self, attrs):
         data = super().validate(attrs)
-        re_data = {'data': data, 'code': 200, 'message': 'success'}
+        re_data = {'data': data, 'code': 20000, 'message': 'success'}
 
         return re_data
 
