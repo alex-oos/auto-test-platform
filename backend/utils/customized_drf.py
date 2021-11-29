@@ -19,14 +19,14 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 # 定制化响应数据格式
 class JsonResponse(Response):
     """An HttpResponse that allows its data to be rendered into arbitrary media types."""
 
-    def __init__(self, data=None, code=20000, msg='ok', success='true',
+    def __init__(self, data=None, code=200, message='ok', success='true',
                  status=None, template_name=None, headers=None,
                  exception=False, content_type=None):
         """
@@ -37,13 +37,13 @@ class JsonResponse(Response):
         """
         super(Response, self).__init__(None, status=status)
         if isinstance(data, Serializer):
-            msg = (
+            message = (
                 'You passed a Serializer instance as data, but '
                 'probably meant to pass serialized `.data` or '
                 '`.error`. representation.'
             )
-            raise AssertionError(msg)
-        self.data = {"code": code, "msg": msg, "success": success, "data": data}
+            raise AssertionError(message)
+        self.data = {"code": code, "message": message, "success": success, "data": data}
         self.template_name = template_name
         self.exception = exception
         self.content_type = content_type
@@ -122,6 +122,7 @@ class GroupCountModelMixin(GenericViewSet):
 class BaseViewSet(ModelViewSet):
     # 登录认证
     # permission_classes = [IsAuthenticated, ]
+    permission_classes = [AllowAny, ]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     pagination_class = Pagination  # 分页
 

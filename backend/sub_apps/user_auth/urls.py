@@ -10,7 +10,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import MyTokenObtainPairView, UserProfileViewSet
+from .views import MyTokenObtainPairView, LogoutAPIView, UserProfileViewSet
 
 
 router = DefaultRouter()
@@ -25,6 +25,7 @@ router.register(r'user/del', UserProfileViewSet, basename='destroy')
 urlpatterns = [
     path('', include(router.urls)),
     path('user/login', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('user/logout', LogoutAPIView.as_view(), name='logout'),
 ]
 
 

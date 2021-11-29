@@ -12,6 +12,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import UserProfile
+from utils.customized_drf import JsonResponse
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -50,8 +51,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     def validate(self, attrs):
         data = super().validate(attrs)
-        re_data = {'data': data, 'code': 20000, 'message': 'success'}
-
+        re_data = {'data': data, 'code': 200, 'message': 'success'}
         return re_data
 
 
