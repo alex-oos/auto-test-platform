@@ -3,8 +3,8 @@
 """
 @author:TXU
 @file:urls.py
-@time:2021/08/23
-@email:xutao@dustess.com
+@time:2021/11/27
+@email:tao.xu2008@outlook.com
 @description:
 """
 from django.urls import path, include
