@@ -5,9 +5,15 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <el-col class="docs-container">
+        <a href="https://txu2k8.github.io/auto-test-platform/" target="_blank">
+          <i class="el-icon-question" title="使用文档" />
+        </a>
+      </el-col>
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+<!--          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">-->
+          <img src="@/assets/login_images/avatar.jpg" alt="" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -28,8 +34,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </div>
-</template>
+  </div></template>
 
 <script>
 import { mapGetters } from 'vuex'
@@ -111,25 +116,31 @@ export default {
       }
     }
 
+    .docs-container {
+      margin-right: 20px;
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
     .avatar-container {
-      margin-right: 30px;
+      margin-right: 20px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        margin-top: 10px;
         position: relative;
 
         .user-avatar {
           cursor: pointer;
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           border-radius: 10px;
         }
 
         .el-icon-caret-bottom {
           cursor: pointer;
           position: absolute;
-          right: -20px;
-          top: 25px;
+          right: -10px;
+          top: 10px;
           font-size: 12px;
         }
       }
