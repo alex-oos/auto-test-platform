@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/',
+  base: '/auto-test-platform/',
   port: 9529,
   theme: '',
   plugins: [
