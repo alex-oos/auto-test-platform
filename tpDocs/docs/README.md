@@ -12,5 +12,5 @@ features:
   details: 测试范围精准生成。
 - title: 工单分析
   details: 工单数据维护、统计分析。
-footer: 尘锋信息
+footer: tao.xu
 ---
